@@ -7,17 +7,14 @@ struct Node {
 };
 
 struct Node* buildLinkedList() {
-	// Initializarea nodurilor din lista
 	struct Node* head = NULL;
 	struct Node* second = NULL;
 	struct Node* third = NULL;
 
-	// Alocarea memoriei in HEAP
 	head = (struct Node*)malloc(sizeof(struct Node));
 	second = (struct Node*)malloc(sizeof(struct Node));
 	third = (struct Node*)malloc(sizeof(struct Node));
 
-	// Atribuire de valori si legarea nodurilor intre ele
 	head->data = 1;
 	head->next = second;
 
