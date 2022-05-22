@@ -13,6 +13,20 @@ int checkIfNodeExists(struct Node* node) {
 	}
 }
 
+int getNumberOfNodes(struct Node* headRef)
+{
+	int count = 0;
+	struct Node* nodeCurrent = headRef;
+
+	while (nodeCurrent != NULL)
+	{
+		count++;
+		nodeCurrent = nodeCurrent->next;
+	}
+
+	return count;
+}
+
 struct Node* buildLinkedList() {
 	struct Node* head = NULL;
 	struct Node* second = NULL;
@@ -139,19 +153,16 @@ void deleteLinkedList(struct Node** headRef) {
 	headRef = NULL;
 }
 
-int getNumberOfNodes(struct Node* headRef)
-{
-	int count = 0;
-	struct Node* nodeCurrent = headRef;
+void updateNodeFromPosition(struct Node* head, int nodePosition, int newNodeData) {
+	struct Node* tempNode = head;
 
-	while (nodeCurrent != NULL)
-	{
-		count++;
-		nodeCurrent = nodeCurrent->next;
+	for (int i = 0; i < nodePosition - 1; i++) {
+		tempNode = tempNode->next;
 	}
 
-	return count;
+	tempNode->data = newNodeData;
 }
+
 
 void main() {
 	struct Node* head = buildLinkedList();
@@ -170,15 +181,19 @@ void main() {
 
 	printLinkedList(head);
 
-	deleteNode(&head, 2);
+	updateNodeFromPosition(head, 3, 2313);
 
 	printLinkedList(head);
 
-	deleteNodeFromPosition(head, 2);
+	//deleteNode(&head, 2);
 
-	printLinkedList(head);
+	//printLinkedList(head);
 
-	deleteLinkedList(head);
+	//deleteNodeFromPosition(head, 2);
 
-	printLinkedList(head);
+	//printLinkedList(head);
+
+	//deleteLinkedList(head);
+
+	//printLinkedList(head);
 }
