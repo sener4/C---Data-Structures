@@ -43,13 +43,13 @@ void printLinkedList(struct Node* node) {
 	printf("\n");
 }
 
-void insertNodeFront(struct Node** headPointer, int newNodeData) {
+void insertNodeFront(struct Node** headRef, int newNodeData) {
 	struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 
 	newNode->data = newNodeData;
-	newNode->next = (*headPointer);
+	newNode->next = (*headRef);
 
-	(*headPointer) = newNode;
+	(*headRef) = newNode;
 }
 
 void insertNodeAfter(struct Node* prevNode, int newNodeData) {
@@ -63,16 +63,16 @@ void insertNodeAfter(struct Node* prevNode, int newNodeData) {
 	prevNode->next = newNode;
 }
 
-void insertNodeEnd(struct Node** headPointer, int newNodeData) {
+void insertNodeEnd(struct Node** headRef, int newNodeData) {
 	struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 
-	struct Node* last = *headPointer;
+	struct Node* last = *headRef;
 
 	newNode->data = newNodeData;
 	newNode->next = NULL;
 
-	if (*headPointer == NULL) {
-		*headPointer = newNode;
+	if (*headRef == NULL) {
+		*headRef = newNode;
 		return;
 	}
 
@@ -81,6 +81,76 @@ void insertNodeEnd(struct Node** headPointer, int newNodeData) {
 	}
 
 	last->next = newNode;
+}
+
+void deleteNode(struct Node** headRef, int prevNodeData) {
+	struct Node* temp = *headRef;
+	struct Node* prev = *headRef;
+
+	if (temp != NULL && temp->data == prevNodeData) {
+		*headRef = temp->next;
+		free(temp);
+		return;
+	}
+
+	while (temp != NULL && temp->data != prevNodeData) {
+		prev = temp;
+		temp = temp->next;
+	}
+
+	if (temp == NULL) {
+		return;
+	}
+
+	prev->next = temp->next;
+
+	free(temp);
+}
+
+void deleteNodeFromPosition(struct Node* head, int nodePosition) {
+	struct Node* temp = head;
+
+	if (nodePosition == 0) {
+		head = head->next;
+		temp->next = NULL;
+		free(temp);
+	}
+	else {
+		for (int i = 0; i < nodePosition - 1; i++) {
+			temp = temp->next;
+		}
+		struct Node* nodeToBeDeleted = temp->next;
+		temp->next = temp->next->next;
+		nodeToBeDeleted->next = NULL;
+		free(nodeToBeDeleted);
+	}
+}
+
+void deleteLinkedList(struct Node** headRef) {
+	struct Node* nodeCurrent = *headRef;
+	struct Node* next;
+
+	while (nodeCurrent != NULL) {
+		next = nodeCurrent->next;
+		free(nodeCurrent);
+		nodeCurrent = next;
+	}
+
+	headRef = NULL;
+}
+
+int getNumberOfNodes(struct Node* headRef)
+{
+	int count = 0;
+	struct Node* nodeCurrent = headRef;
+
+	while (nodeCurrent != NULL)
+	{
+		count++;
+		nodeCurrent = nodeCurrent->next;
+	}
+
+	return count;
 }
 
 void main() {
@@ -97,6 +167,18 @@ void main() {
 	printLinkedList(head);
 
 	insertNodeEnd(&head, 7);
+
+	printLinkedList(head);
+
+	deleteNode(&head, 2);
+
+	printLinkedList(head);
+
+	deleteNodeFromPosition(head, 2);
+
+	printLinkedList(head);
+
+	deleteLinkedList(head);
 
 	printLinkedList(head);
 }
