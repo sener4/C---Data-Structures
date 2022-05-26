@@ -164,7 +164,7 @@ void updateNodeFromPosition(struct Node* head, int nodePosition, int newNodeData
 }
 
 
-void maintest() {
+void main() {
 	struct Node* head = buildLinkedList();
 
 	printLinkedList(head);
