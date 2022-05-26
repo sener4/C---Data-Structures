@@ -21,5 +21,8 @@
     <ClCompile Include="Linked_List_Doubly.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Linked_List_Circular.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

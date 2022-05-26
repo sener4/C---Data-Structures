@@ -117,7 +117,8 @@ void insertNodeEndDoubly(struct Node** headRef, int newData)
 
 void deleteNodeDoubly(struct Node* node)
 {
-	struct Node* prev;
+	struct Node* prev = (struct Node*)malloc(sizeof(struct Node));
+
 	if (node == NULL)
 		return;
 	else {
@@ -126,11 +127,12 @@ void deleteNodeDoubly(struct Node* node)
 			prev = node;
 			node = node->next;
 		}
+
 		prev->next = NULL;
 	}
 }
 
-void main() {
+void maintest1() {
 	struct Node* head = buildLinkedListDoubly();
 
 	printLinkedListDoubly(head);

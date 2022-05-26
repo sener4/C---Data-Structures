@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Linked_List.c" />
+    <ClCompile Include="Linked_List_Circular.c" />
     <ClCompile Include="Linked_List_Doubly.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
