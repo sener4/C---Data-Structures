@@ -52,7 +52,7 @@ void printList(struct Node* head) {
 	printf("\r\n");
 }
 
-void mainLinkedListCircular() {
+void main() {
 	struct Node* head = NULL;
 
 	insertNodeFrontCircular(&head, 1);
