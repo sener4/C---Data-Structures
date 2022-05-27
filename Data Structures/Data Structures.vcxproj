@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HashTable.c" />
     <ClCompile Include="Linked_List.c" />
     <ClCompile Include="Linked_List_Circular.c" />
     <ClCompile Include="Linked_List_Doubly.c" />

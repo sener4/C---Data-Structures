@@ -132,7 +132,7 @@ void deleteNodeDoubly(struct Node* node)
 	}
 }
 
-void main() {
+void mainLinkedListDoubly() {
 	struct Node* head = buildLinkedListDoubly();
 
 	printLinkedListDoubly(head);
